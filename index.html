@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Stylists Archive — Coming to LA</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #fff;
+      color: #000;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 36px 40px 0;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: #000;
+      text-decoration: none;
+    }
+
+    /* ── NAV BAR ── */
+    .nav-bar {
+      margin: 40px 40px 0;
+      border: 1px solid #ddd;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .nav-bar a {
+      padding: 14px 20px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #000;
+      text-decoration: none;
+      text-align: center;
+      border-right: 1px solid #ddd;
+      transition: background 0.15s;
+    }
+    .nav-bar a:last-child { border-right: none; }
+    .nav-bar a:hover { background: #f5f5f5; }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 40px 80px;
+    }
+
+    .copy-block {
+      max-width: 620px;
+      margin-bottom: 64px;
+    }
+
+    .main-heading {
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      color: #000;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .main-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: #000;
+      line-height: 1.85;
+      letter-spacing: 0.01em;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #ccc;
+    }
+
+    .submit-btn {
+      display: block;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      margin-top: -1px;
+      padding: 16px;
+      background: #000;
+      color: #fff;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .submit-btn:hover { background: #333; }
+
+    /* ── FORM ── */
+    .form-label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #000;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .name-row input { width: 100%; }
+
+    .form-row {
+      display: flex;
+      border: 1px solid #000;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-row input {
+      flex: 1;
+      padding: 16px 20px;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      border: none;
+      outline: none;
+      color: #000;
+      background: #fff;
+      letter-spacing: 0.04em;
+    }
+
+    .form-row input::placeholder { color: #aaa; }
+
+    .form-row button {
+      padding: 16px 28px;
+      background: #000;
+      color: #fff;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .form-row button:hover { background: #333; }
+
+    .form-note {
+      font-size: 11px;
+      color: #bbb;
+      margin-top: 12px;
+      letter-spacing: 0.06em;
+    }
+
+    .success-msg {
+      display: none;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #000;
+      padding: 20px 0;
+    }
+
+    /* ── SOCIAL STRIP ── */
+    .social-strip {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 72px;
+    }
+
+    .social-strip a {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #000;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .social-strip a:hover { border-color: #000; }
+
+    .ig-icon {
+      width: 42px;
+      height: 42px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 40px;
+      text-align: center;
+      border-top: 1px solid #eee;
+    }
+
+    .footer-tagline {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #bbb;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      header { padding: 28px 24px 0; }
+      .nav-bar { margin: 28px 24px 0; }
+      main { padding: 72px 24px 60px; }
+      footer { padding: 28px 24px; }
+      .social-strip { flex-direction: column; align-items: center; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="#" class="logo">The Stylists Archive</a>
+  </header>
+
+
+
+  <main>
+    <div class="copy-block">
+      <p class="main-heading" style="font-weight:700;">Los Angeles,<br/>The Stylists Archive Is Coming Soon</p>
+      <p class="main-sub">Connecting stylists and costume designers with the city's iconic rental houses.<br/>Wardrobe sourcing, made simple — favorites and moodboards, all at your fingertips.</p>
+    </div>
+
+    <div id="waitlist">
+      <label class="form-label">Join our waitlist for exclusive early access</label>
+      <div class="form-row">
+        <input type="text" id="name-input" placeholder="Your name" />
+        <input type="email" id="email-input" placeholder="your@email.com" style="border-left: 1px solid #000;" />
+      </div>
+      <button class="submit-btn" onclick="handleSubmit()">Join Waitlist</button>
+      <p class="form-note">No spam. Early access only.</p>
+      <p class="success-msg" id="success-msg">You're on the list — we'll be in touch.</p>
+    </div>
+
+    <div class="social-strip">
+      <a href="https://www.instagram.com/thestylistsarchive" target="_blank">
+        <svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="4.5"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p class="footer-tagline">Created for the industry, by the industry</p>
+  </footer>
+
+    <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby0O1r95ylK6DSoSYu6CdhszgzSecqGplrDYGdX-QFaEzlrv56fWljdssguk_o0Ps6I/exec";
+
+    function handleSubmit() {
+      const nameInput = document.getElementById('name-input');
+      const emailInput = document.getElementById('email-input');
+      const successMsg = document.getElementById('success-msg');
+      const note = document.querySelector('.form-note');
+      const label = document.querySelector('.form-label');
+      const btn = document.querySelector('.submit-btn');
+
+      if (!nameInput.value.trim()) {
+        nameInput.placeholder = 'Please enter your name';
+        nameInput.focus();
+        return;
+      }
+      if (!emailInput.value || !emailInput.value.includes('@')) {
+        emailInput.placeholder = 'Please enter a valid email';
+        emailInput.focus();
+        return;
+      }
+
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      // Build form data - Google Apps Script handles this natively
+      const formData = new FormData();
+      formData.append('name', nameInput.value.trim());
+      formData.append('email', emailInput.value.trim());
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      });
+
+      // Show success immediately (no-cors means we can't read response)
+      document.querySelectorAll('.form-row').forEach(r => r.style.display = 'none');
+      btn.style.display = 'none';
+      note.style.display = 'none';
+      label.style.display = 'none';
+      successMsg.style.display = 'block';
+
+      setTimeout(() => {
+        successMsg.style.display = 'none';
+        document.querySelectorAll('.form-row').forEach(r => r.style.display = 'flex');
+        btn.style.display = 'block';
+        label.style.display = 'block';
+        note.style.display = 'block';
+        nameInput.value = '';
+        emailInput.value = '';
+        btn.textContent = 'Join Waitlist';
+        btn.disabled = false;
+      }, 10000);
+    }
+
+    document.getElementById('email-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') handleSubmit();
+    });
+  </script>
+</body>
+</html>
