@@ -67,14 +67,23 @@
     }
 
     .main-heading {
-      font-size: clamp(24px, 3.5vw, 44px);
       font-weight: 700;
       letter-spacing: 0.04em;
-      line-height: 1.15;
+      line-height: 1.2;
       color: #000;
       margin-bottom: 24px;
       text-transform: uppercase;
-      white-space: nowrap;
+      text-align: center;
+    }
+
+    .heading-cities {
+      font-size: clamp(32px, 5vw, 60px);
+      display: block;
+    }
+
+    .heading-tagline {
+      font-size: clamp(24px, 3.5vw, 42px);
+      display: block;
     }
 
     .main-sub {
@@ -213,7 +222,10 @@
 
   <main>
     <div class="copy-block">
-      <p class="main-heading">Los Angeles &amp; London<br/>The Stylists Archive Is Coming Soon</p>
+      <p class="main-heading">
+        <span class="heading-cities">Los Angeles &amp; London</span>
+        <span class="heading-tagline">The Stylists Archive Is Coming Soon</span>
+      </p>
       <p class="main-sub">Connecting stylists and costume designers with the world's iconic costume houses and fashion archives. Search 1000s of pieces by word or image — wardrobe sourcing, made simple.</p>
     </div>
 
